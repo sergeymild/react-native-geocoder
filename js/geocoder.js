@@ -10,12 +10,12 @@ export default {
     this.apiKey = key;
   },
 
-  geocodePosition(position) {
+  geocodePosition(position, locale = "en") {
     if (!position || !position.lat || !position.lng) {
       return Promise.reject(new Error("invalid position: {lat, lng} required"));
     }
 
-    return RNGeocoder.geocodePosition(position).catch(err => {
+    return RNGeocoder.geocodePosition(position, locale).catch(err => {
       if (!this.apiKey) { throw err; }
       return GoogleApi.geocodePosition(this.apiKey, position);
     });
