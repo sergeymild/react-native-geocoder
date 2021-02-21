@@ -72,6 +72,10 @@ public class RNGeocoderModule extends ReactContextBaseJavaModule {
     WritableArray transform(List<Address> addresses) {
         WritableArray results = new WritableNativeArray();
 
+        if (addresses == null) {
+            return results;
+        }
+
         for (Address address: addresses) {
             WritableMap result = new WritableNativeMap();
 
